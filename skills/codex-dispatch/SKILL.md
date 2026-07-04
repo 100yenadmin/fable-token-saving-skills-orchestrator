@@ -69,3 +69,15 @@ self-contained, keep the task with Fable or a local lane.
 
 If the diff or report is large, ask a fast worker for a bounded digest first.
 Fable reads the digest and flagged hunks, not the whole raw output.
+
+## Attribution And Adjacent Tools
+
+This dispatch pattern is inspired in part by
+[blader/arbitrage](https://github.com/blader/arbitrage), which focuses on
+premium-model judgment plus Codex implementation. Claude Code users who want a
+slash-command bridge to Codex review and delegation workflows can also look at
+[openai/codex-plugin-cc](https://github.com/openai/codex-plugin-cc).
+
+FTSO's own guidance remains tool-agnostic: write the spec first, dispatch only
+bounded work, review the output before accepting it, keep turns dense while
+lanes run, and name the proof boundary.

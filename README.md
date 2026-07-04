@@ -82,6 +82,7 @@ The practical rule:
 - [Keepalive economics](docs/keepalive-economics.md)
 - [Run economics](docs/run-economics.md)
 - [Adapting model names](docs/adapting-model-names.md)
+- [Related tools and inspirations](docs/related-tools.md)
 - [Troubleshooting](docs/troubleshooting.md)
 
 ## Repo Layout
@@ -104,6 +105,12 @@ the routing to your own models, prices, and agent harness.
 Do not paste credentials into scripts. Use environment variables or your own
 secret manager. The example GLM/off-budget lane docs intentionally use
 placeholder env vars, not tokens.
+
+Related projects such as
+[openai/codex-plugin-cc](https://github.com/openai/codex-plugin-cc) and
+[blader/arbitrage](https://github.com/blader/arbitrage) are useful references
+for adjacent Codex delegation workflows and token-arbitrage framing. See
+[Related tools and inspirations](docs/related-tools.md) for the boundary.
 
 ## Contributing
 
