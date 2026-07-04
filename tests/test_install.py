@@ -40,6 +40,7 @@ class InstallTests(unittest.TestCase):
             self.assertTrue((home / "hooks" / "stop-keepalive-guard.py").exists())
             self.assertTrue((home / "hooks" / "stop-autonomous-guard.py").exists())
             self.assertTrue((home / "skills" / "fable-orchestrator-router" / "SKILL.md").exists())
+            self.assertTrue((home / "skills" / "public-readme-polisher" / "SKILL.md").exists())
             self.assertTrue((home / "CLAUDE.md").exists())
             self.assertIn("FTSO:BEGIN", (home / "CLAUDE.md").read_text(encoding="utf-8"))
             backups = list(home.glob("settings.json.bak-ftso-*"))
@@ -110,6 +111,15 @@ class InstallTests(unittest.TestCase):
             self.assertTrue((home / "hooks" / "stop-keepalive-guard.py").exists())
             self.assertFalse((home / "CLAUDE.md").exists())
             self.assertFalse((home / "skills").exists())
+
+    def test_partial_skill_install_copies_public_readme_polisher(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            home = Path(tmp) / "claude-home"
+            result = self.run_install("--apply", "--claude-home", str(home), "--install-skills")
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertTrue((home / "skills" / "public-readme-polisher" / "SKILL.md").exists())
+            self.assertFalse((home / "hooks").exists())
+            self.assertFalse((home / "CLAUDE.md").exists())
 
 
 if __name__ == "__main__":

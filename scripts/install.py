@@ -21,6 +21,7 @@ SKILL_DIRS = [
     ROOT / "skills" / "fable-orchestrator-router",
     ROOT / "skills" / "codex-dispatch",
     ROOT / "skills" / "run-economics",
+    ROOT / "skills" / "public-readme-polisher",
 ]
 BEGIN_MARKER = "<!-- FTSO:BEGIN -->"
 END_MARKER = "<!-- FTSO:END -->"
