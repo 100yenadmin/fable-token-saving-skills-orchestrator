@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/.claude/hooks/stop-keepalive-guard.py\"",
+            "timeout": 5,
+            "statusMessage": "FTSO keepalive guard: checking short-wait coverage..."
+          }
+        ]
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/.claude/hooks/stop-autonomous-guard.py\"",
+            "timeout": 5,
+            "statusMessage": "FTSO autonomous guard: checking for report-only stop..."
+          }
+        ]
+      }
+    ]
+  }
+}
