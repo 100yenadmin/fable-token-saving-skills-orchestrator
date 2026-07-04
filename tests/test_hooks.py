@@ -145,6 +145,24 @@ class AutonomousHookTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0)
             self.assertEqual(result.stdout, "")
 
+    def test_allows_genuinely_pending_background_wake_phrase(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            plans = root / "plans"
+            plans.mkdir()
+            (plans / "active.md").write_text("next: continue", encoding="utf-8")
+            transcript = root / "transcript.jsonl"
+            self.write_transcript(
+                transcript,
+                "The probe is still running in the background; they'll wake this session when done.",
+            )
+            result = self.run_hook(
+                {"FTSO_PLAN_GLOB": str(plans / "*.md")},
+                {"transcript_path": str(transcript)},
+            )
+            self.assertEqual(result.returncode, 0)
+            self.assertEqual(result.stdout, "")
+
 
 if __name__ == "__main__":
     unittest.main()

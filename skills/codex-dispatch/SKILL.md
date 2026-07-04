@@ -36,6 +36,35 @@ Include:
 - proof boundary
 - expected final report shape
 
+## Mechanics
+
+Some lanes are reachable through a CLI rather than a workflow model parameter.
+When a background shell launches a side worker, close stdin explicitly if the
+tool expects EOF. For Codex CLI, use:
+
+```bash
+codex exec --cd <worktree> "<prompt>" < /dev/null
+```
+
+Without the redirected stdin, some background shells can leave the worker
+waiting at startup instead of doing work.
+
+## Skill Availability
+
+Side workers do not automatically see every local Claude skill. Port skills on
+demand when a dispatch needs them; do not mirror an entire skill library by
+default.
+
+Example:
+
+```bash
+ln -sfn "$HOME/.claude/skills/<skill>" "$HOME/.codex/skills/<skill>"
+```
+
+Name the required skill in the dispatch packet and keep the accepted output
+bounded. If the side worker lacks a required skill and the work is not
+self-contained, keep the task with Fable or a local lane.
+
 ## Review Rule
 
 If the diff or report is large, ask a fast worker for a bounded digest first.

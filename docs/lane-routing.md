@@ -26,6 +26,23 @@ Before delegating, score the unit:
 
 Use Fable for the call. Route the typing.
 
+## Capability Axes
+
+If you keep a model table, treat it as a local operating map, not a public law.
+The useful axes are:
+
+- marginal cost: what this lane actually costs you, including credits,
+  subscriptions, quotas, retries, and wall-clock waste
+- intelligence: how hard a problem the lane can handle without supervision
+- taste: UI, copy, API shape, code-quality judgment, and product feel
+- access mechanics: whether the lane is reachable through a model parameter,
+  a CLI, a plugin, or a wrapper
+
+When these axes conflict for anything that ships, intelligence and taste beat
+cost. Cost is a tie-breaker for acceptable outputs, not permission to ship weak
+work. Defaults are not limits: if a cheap lane misses the bar, escalate without
+asking.
+
 ## Escalation
 
 Judge the output, not the price tag. If a cheap lane misses the bar, rerun one
