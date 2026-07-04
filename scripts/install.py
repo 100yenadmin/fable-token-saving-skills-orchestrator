@@ -22,6 +22,7 @@ SKILL_DIRS = [
     ROOT / "skills" / "codex-dispatch",
     ROOT / "skills" / "run-economics",
     ROOT / "skills" / "public-readme-polisher",
+    ROOT / "skills" / "public-repo-operationalizer",
 ]
 BEGIN_MARKER = "<!-- FTSO:BEGIN -->"
 END_MARKER = "<!-- FTSO:END -->"

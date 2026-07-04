@@ -22,7 +22,7 @@ replacing it. It is additive, not a replacement.
 | --- | --- |
 | Additive `CLAUDE.md` block | Fable-first orchestration, dense turns, routing, and wait discipline |
 | Stop hooks | Fail-open guards for common long-running-agent stop mistakes |
-| Skill templates | Reusable routing, Codex dispatch, README polish, and run-economics workflows |
+| Skill templates | Reusable routing, Codex dispatch, README polish, public repo operational status, and run-economics workflows |
 | Dry-run installer | Safe setup that does nothing unless `--apply` is present |
 | Public docs | Cache economics, lane routing, troubleshooting, and model-name adaptation |
 | Focused tests | Installer, hooks, and docs-safety checks for public reuse |

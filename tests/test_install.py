@@ -10,6 +10,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 INSTALL = ROOT / "scripts" / "install.py"
+SKILL_NAMES = sorted(path.parent.name for path in (ROOT / "skills").glob("*/SKILL.md"))
 
 
 class InstallTests(unittest.TestCase):
@@ -39,8 +40,9 @@ class InstallTests(unittest.TestCase):
 
             self.assertTrue((home / "hooks" / "stop-keepalive-guard.py").exists())
             self.assertTrue((home / "hooks" / "stop-autonomous-guard.py").exists())
-            self.assertTrue((home / "skills" / "fable-orchestrator-router" / "SKILL.md").exists())
-            self.assertTrue((home / "skills" / "public-readme-polisher" / "SKILL.md").exists())
+            for skill_name in SKILL_NAMES:
+                with self.subTest(skill=skill_name):
+                    self.assertTrue((home / "skills" / skill_name / "SKILL.md").exists())
             self.assertTrue((home / "CLAUDE.md").exists())
             self.assertIn("FTSO:BEGIN", (home / "CLAUDE.md").read_text(encoding="utf-8"))
             backups = list(home.glob("settings.json.bak-ftso-*"))
@@ -117,7 +119,9 @@ class InstallTests(unittest.TestCase):
             home = Path(tmp) / "claude-home"
             result = self.run_install("--apply", "--claude-home", str(home), "--install-skills")
             self.assertEqual(result.returncode, 0, result.stderr)
-            self.assertTrue((home / "skills" / "public-readme-polisher" / "SKILL.md").exists())
+            for skill_name in SKILL_NAMES:
+                with self.subTest(skill=skill_name):
+                    self.assertTrue((home / "skills" / skill_name / "SKILL.md").exists())
             self.assertFalse((home / "hooks").exists())
             self.assertFalse((home / "CLAUDE.md").exists())
 
