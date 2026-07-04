@@ -1,4 +1,4 @@
-# Fable Token-Saving Skills Orchestrator
+# 🧚 Fable Token-Saving Skills Orchestrator
 
 Fable is excellent at judgment: strategy, architecture, decomposition, review,
 and synthesis. It is also expensive enough that letting it type every routine
